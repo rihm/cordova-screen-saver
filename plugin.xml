@@ -1,1 +1,38 @@
 
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+      id="cordova-plugin-wallpaper"
+      version="0.1.0">
+    <name>Set Screensaver</name>
+    <description>Cordova Set Screensaver Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>cordova,screensaver</keywords>
+    <repo></repo>
+    <issue></issue>
+
+    <js-module src="www/screensaver.js" name="screensaver">
+        <clobbers target="screensaver" />
+    </js-module>
+    
+    <!-- android -->
+    <platform name = "android">
+        <config-file target = "res/xml/config.xml" parent = "/*">
+            <feature name = "screensaver" >
+                <param name = "android-package" value = "com.shakespiker.screensaver"/>
+            </feature>
+        </config-file>
+        <config-file target = "AndroidManifest.xml" parent="/*">
+         
+            <uses-permission android:name = "android.permission.INTERNET" />
+        </config-file>
+        <source-file src = "src/android/Screensaver.java" target-dir = "src/ssdd/screensaver" />
+         <source-file src = "src/android/OverlayService.java" target-dir = "src/ssdd/screensaver" />
+          <source-file src = "src/android/OverlayFragment.java" target-dir = "src/ssdd/screensaver" />
+           <source-file src = "src/android/OverlayActivity.java" target-dir = "src/ssdd/screensaver" />
+
+            <source-file src="src/android/res/layout/fragment_overlay.xml" target-dir="res/layout" />
+            <source-file src="index.html" target-dir="src/assets"/>
+    </platform>
+    
+</plugin>
